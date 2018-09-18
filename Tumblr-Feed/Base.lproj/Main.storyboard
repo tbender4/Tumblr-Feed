@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,19 +30,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-Zi-7Yv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-Zi-7Yv">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="219" id="G7d-f3-MGu"/>
-                                                        <constraint firstAttribute="width" constant="375" id="ZYk-A7-j9g"/>
-                                                        <constraint firstAttribute="width" secondItem="RMw-Zi-7Yv" secondAttribute="height" multiplier="125:73" id="xIF-wq-uD5"/>
-                                                    </constraints>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="RMw-Zi-7Yv" firstAttribute="top" secondItem="WRn-Rj-LVy" secondAttribute="top" id="9aq-4c-MRm"/>
-                                                <constraint firstItem="RMw-Zi-7Yv" firstAttribute="leading" secondItem="WRn-Rj-LVy" secondAttribute="leading" id="Heg-CZ-lzW"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="photoCellView" destination="WRn-Rj-LVy" id="63W-ub-hbJ"/>

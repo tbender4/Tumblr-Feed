@@ -64,6 +64,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
       let urlString = originalsize["url"] as! String
       let url = URL(string: urlString)
       cell.photoImageView.af_setImage(withURL: url!)
+     //self.photosTableView.reloadData()
     }
     
     return cell

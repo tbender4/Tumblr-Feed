@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var photosTableView: UITableView!
-  @IBOutlet weak var photoTableViewCell: UITableViewCell!
   
   var posts: [[String: Any]] = []
   
@@ -52,8 +52,19 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
 
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell()
-    cell.textLabel?.text = "This is row \(indexPath.row)"
+    //let cell = UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+    //cell.textLabel?.text = "This is row \(indexPath.row)"
+    
+    let post = posts[indexPath.row]
+    if let photos = post["photos"] as? [[String: Any]] {
+      //TODO: Get the URL
+      let photo = photos[0]
+      let originalsize = photo["original_size"] as! [String: Any]
+      let urlString = originalsize["url"] as! String
+      let url = URL(string: urlString)
+      cell.photoImageView.af_setImage(withURL: url!)
+    }
     
     return cell
   }

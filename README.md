@@ -23,8 +23,8 @@ The following **additional** user stories are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Is my current `refreshControl` implemented the correct way?
+2. What's the most correct way of setting and resizing the photo's Image View?
 
 ## Video Walkthrough
 
@@ -37,6 +37,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
+ - Getting images to resize correctly was not explained in the guides.
 
 ## License
 

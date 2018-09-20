@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import Alamofire      //needed for network handling
 
 class PhotosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
@@ -15,6 +16,17 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
   
   var posts: [[String: Any]] = []
   var refreshControl = UIRefreshControl()
+  
+  
+  let alertController = UIAlertController(title: "Cannot Get Photos", message: "The Internet connection appears to be offline.", preferredStyle: .alert)
+  //network handling
+  func initAlert() {
+    let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) { (action) in
+      self.fetchPhotos()
+    }
+  alertController.addAction(tryAgainAction)
+  }
+  //end networking handling
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,6 +36,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
 
     refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
     photosTableView.insertSubview(refreshControl, at: 0)
+    
+    initAlert()
     fetchPhotos()
   
   }
@@ -39,6 +53,8 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     let task = session.dataTask(with: url) { (data, response, error) in
       if let error = error {
         print(error.localizedDescription)
+        self.present(self.alertController, animated: true)
+        
       } else if let data = data,
         let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
         //print(dataDictionary)
